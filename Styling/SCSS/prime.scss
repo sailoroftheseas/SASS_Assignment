@@ -1,9 +1,32 @@
+$color-green-blue: #00332B;
+$custom-font-size: 0.90em;
+$custom-margin: 0;
+$color-1: random(255);
+$color-2: random(255);
+$color-3: random(255);
+$background-color: rgb($color-1,$color-2,$color-3);
+
+@mixin padding-right-bottom($padding-value)  {  
+  padding-right: $padding-value;
+  padding-bottom: $padding-value;
+}
+
+@mixin set-margin-left-right($margin-size)  {
+  margin-left: $margin-size;
+  margin-right: $margin-size;  
+}
+
+.margin-left-right{
+  @include set-margin-left-right(10px);
+}
+
 header, nav, main, footer {
   display: block;
 }
 
 body {
-  background-color: #000033;
+/*  background-color: #000033;*/
+  background-color: $background-color;
   background-image: url(primehorizontal.png);
   color: #003300;
   font-family: Arial, Helvetica, sans-serif;
@@ -15,11 +38,11 @@ body {
   max-width: 960px;
   margin-right: auto;
   margin-left: auto;
-  background-color: #FFFFCC;
+  background-color: $background-color;
   padding: 0 0 20px 30px;
-  border: 1px ridge #00332B;
+  border: 1px ridge $color-green-blue;
   border-radius: 15px;
-  box-shadow: inset -3px -3px 3px 3px #00332B;
+  box-shadow: inset -3px -3px 3px 3px $color-green-blue;
 }
 
 header {
@@ -69,7 +92,7 @@ nav {
   }
   ul {
     list-style-type: none;
-    margin: 0;
+    margin: $custom-margin;
     padding-left: 0;
   }
 }
@@ -84,20 +107,21 @@ main {
 
 dd {
   font-style: italic;
-  font-size: 0.90em;
+  font-size: $custom-font-size;
   line-height: 200%;
 }
 
 .contact {
   font-weight: bold;
-  font-size: 0.90em;
+  font-size: $custom-font-size;
   font-family: "Times New Roman", serif;
 }
 
 .floatleft {
   float: left;
-  padding-right: 20px;
-  padding-bottom: 20px;
+/*  padding-right: 20px;*/
+/*  padding-bottom: 20px;*/
+    @include padding-right-bottom(20px);
 }
 
 .clear {
@@ -125,15 +149,15 @@ footer {
 
 @media only screen and (max-width: 1024px) {
   body {
-    margin: 0;
+    margin: $custom-margin;
     padding: 0;
-    background-color: #FFFFCC;
+    background-color: $background-color;
     background-image: none;
   }
   #wrapper {
     width: 100%;
     min-width: 0;
-    margin: 0;
+    margin: $custom-margin;
     padding: 0;
     box-shadow: none;
     border-radius: 0;
@@ -146,7 +170,7 @@ footer {
     height: 100%;
   }
   h1 {
-    margin: 0;
+    margin: $custom-margin;
     padding-left: 2em;
     text-indent: 0;
     font-size: 3.7em;
@@ -165,7 +189,7 @@ footer {
   }
   main {
     padding: 2.5em 1em;
-    margin: 0;
+    margin: $custom-margin;
     font-size: 90%;
     clear: both;
   }
@@ -192,19 +216,22 @@ footer {
   }
   .floatleft {
     float: none;
-    padding-right: 0;
-    padding-bottom: 0;
+/*    padding-right: 0;*/
+/*    padding-bottom: 0;*/
+
+    @include padding-right-bottom(0);
+    
   }
   h3 {
     padding-top: 0;
-    margin: 0;
+    margin: $custom-margin;
   }
   dd {
     line-height: 100%;
   }
   footer {
     padding: 0.5em;
-    margin: 0;
+    margin: $custom-margin;
   }
   #mobile {
     display: inline;
